@@ -1831,25 +1831,25 @@
 
   <!-- ========== SCRIPTS ========== -->
   <script type="module">
-    // ===== 1. FIREBASE CONFIG (NOUVELLE) =====
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-    import { getDatabase, ref, get, onValue, update, push, set } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+    import { getDatabase, ref, get, onValue, update, push, set } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
 
+    // ===== NOUVELLE CONFIGURATION FIREBASE =====
     const firebaseConfig = {
-      apiKey: "AIzaSyCU-KBtj7vx3OouofytlwIN3KPd1McNlEk",
-      authDomain: "vantex-admin-2026.firebaseapp.com",
-      databaseURL: "https://vantex-admin-2026-default-rtdb.europe-west1.firebasedatabase.app",
-      projectId: "vantex-admin-2026",
-      storageBucket: "vantex-admin-2026.firebasestorage.app",
-      messagingSenderId: "810884502320",
-      appId: "1:810884502320:web:eaa65dd950be655bf02ef5"
+      apiKey: "AIzaSyDqytxWH-ea4nHsgeAE_5vg6NbHY4Ws_qw",
+      authDomain: "admin-zenpay-v2.firebaseapp.com",
+      databaseURL: "https://admin-zenpay-v2-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "admin-zenpay-v2",
+      storageBucket: "admin-zenpay-v2.firebasestorage.app",
+      messagingSenderId: "683072312016",
+      appId: "1:683072312016:web:56f5464922b747bb09c4d5"
     };
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    // ===== 2. AUTH ANONYME =====
-    await import("https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js").then(m=>m.signInAnonymously(m.getAuth(app)));
+    // Connexion anonyme Firebase
+    await import("https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js").then(m=>m.signInAnonymously(m.getAuth(app)));
 
     let user = null;
     let currentHistory = [];
@@ -1859,7 +1859,7 @@
     let sessionId = null;
     let refreshInProgress = false;
 
-    // ===== API ZOHO =====
+    // ===== API ZOHO (envoi d'email) =====
     const sendMail = async ({ to, name, subject, html }) => {
       try {
         const res = await fetch('https://zenpay-mail.vercel.app/api/send', {
